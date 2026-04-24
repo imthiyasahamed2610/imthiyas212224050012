@@ -5,7 +5,8 @@ Write a C program to find the maximum of three numbers without using logical ope
 CODE:
 
 #include <stdio.h>
-int main() {
+int main() 
+
     int a, b, c, max;
     printf("Enter three numbers: ");
     scanf("%d %d %d", &a, &b, &c);
@@ -19,16 +20,25 @@ int main() {
 }
 OUTPUT:
 
+
 Enter three numbers: 10 25 15
+
 Maximum number is: 25
+
+
 2.QUESTION
 
 Write a C program to check whether the given year is leap year or not by adding century leap year or non-century leap year in the output (Eg: 2000 is a century leap year, 2024 is a non-century leap year)
 
 CODE:
 
+
+
 #include <stdio.h>
-int main() {
+int main()
+
+{
+   
     int year;
     printf("Enter a year: ");
     scanf("%d", &year);
@@ -46,10 +56,15 @@ int main() {
     }
     return 0;
 }
+
+
 OUTPUT:
 
 Enter a year: 2024
+
 2024 is a non-century leap year
+
+
 3.QUESTION
 
 Write a C program to find whether the entered character is alphabet / digit / special character. If the entered character is an alphabet then say it is vowel or consonant without using built in functions.
@@ -58,6 +73,7 @@ CODE:
 
 #include <stdio.h>
 int main() {
+    
     char ch;
     printf("Enter a character: ");
     scanf(" %c", &ch);
@@ -81,8 +97,12 @@ int main() {
 OUTPUT:
 
 Enter a character: a
+
 It is an alphabet
+
 It is a vowel
+
+
 4.QUESTION
 
 Write a C program for simple ATM simulation with operations Check Balance, Deposit, Withdraw, Exit using switch and update balance accordingly.
@@ -91,6 +111,7 @@ CODE:
 
 #include <stdio.h>
 int main() {
+    
     int choice;
     float bal = 1000, amount;
     do {
@@ -129,19 +150,33 @@ int main() {
 OUTPUT:
 
 1. Check Balance
-2. Deposit
+   
+2. Deosit
+ 
 3. Withdraw
+ 
 4. Exit
+ 
 Enter your choice: 2
+
 Enter amount to deposit: 500
+
 Updated Balance: 1500.00
 
 1. Check Balance
-2. Deposit
-3. Withdraw
-4. Exit
+ 
+ 2. Deposit
+  
+4. Withdraw
+ 
+6. Exit
+
+   
 Enter your choice: 4
+
 Thank you!
+
+
 5.QUESTION
 
 Write a C program for menu driven calculator using [switch statement]
@@ -150,6 +185,7 @@ CODE:
 
 #include <stdio.h>
 int main() {
+  
     int choice;
     float a, b;
     printf("Enter two numbers: ");
@@ -183,8 +219,13 @@ OUTPUT:
 Enter two numbers: 10 5
 
 1. Addition
+ 
 2. Subtraction
+ 
 3. Multiplication
+ 
 4. Division
+ 
 Enter your choice: 1
+
 Result = 15.00
