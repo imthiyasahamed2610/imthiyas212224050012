@@ -1,34 +1,53 @@
 1.QUESTION
 
-Write a C program to find the maximum of three numbers without using logical operators.
+
+1. Write a c program to print all prime numbers between two limits.
+
 
 CODE:
 
 #include <stdio.h>
 int main() 
 
-    int a, b, c, max;
-    printf("Enter three numbers: ");
-    scanf("%d %d %d", &a, &b, &c);
-    max = a;
-    if (b > max)
-        max = b;
-    if (c > max)
-        max = c;
-    printf("Maximum number is: %d", max);
+int start, end, i, j, isPrime;
+
+    printf("Enter two numbers: ");
+    scanf("%d %d", &start, &end);
+
+    printf("Prime numbers between %d and %d are:\n", start, end);
+
+    for(i = start; i <= end; i++) {
+        if(i < 2) continue;   // skip numbers less than 2
+
+        isPrime = 1;
+
+        for(j = 2; j <= i/2; j++) {
+            if(i % j == 0) {
+                isPrime = 0;
+                break;
+            }
+        }
+
+        if(isPrime == 1) {
+            printf("%d ", i);
+        }
+    }
+
     return 0;
 }
+
 OUTPUT:
 
+Enter two numbers: 10 30
 
-Enter three numbers: 10 25 15
-
-Maximum number is: 25
+Prime numbers between 10 and 30 are:
+11 13 17 19 23 29
 
 
 2.QUESTION
 
-Write a C program to check whether the given year is leap year or not by adding century leap year or non-century leap year in the output (Eg: 2000 is a century leap year, 2024 is a non-century leap year)
+Write a c program to count the number of digits in a number.
+
 
 CODE:
 
@@ -38,194 +57,169 @@ CODE:
 int main()
 
 {
-   
-    int year;
-    printf("Enter a year: ");
-    scanf("%d", &year);
-    if (year % 400 == 0) {
-        printf("%d is a century leap year", year);
+
+      int num, count = 0;
+
+    printf("Enter a number: ");
+    scanf("%d", &num);
+
+    // Handle negative numbers
+    if(num < 0) {
+        num = -num;
     }
-    else if (year % 100 == 0) {
-        printf("%d is not a leap year", year);
+
+    // Count digits
+    while(num != 0) {
+        num = num / 10;
+        count++;
     }
-    else if (year % 4 == 0) {
-        printf("%d is a non-century leap year", year);
+
+    // If number is 0
+    if(count == 0) {
+        count = 1;
     }
-    else {
-        printf("%d is not a leap year", year);
-    }
+
+    printf("Number of digits = %d", count);
+
     return 0;
 }
+   
+    
 
 
 OUTPUT:
 
-Enter a year: 2024
+Enter a number: 12345
 
-2024 is a non-century leap year
-
+Number of digits = 5
 
 3.QUESTION
 
-Write a C program to find whether the entered character is alphabet / digit / special character. If the entered character is an alphabet then say it is vowel or consonant without using built in functions.
+Write a c program to print the alphabet S in n x n matrix.
 
 CODE:
 
 #include <stdio.h>
-int main() {
+int main() 
+    {
     
-    char ch;
-    printf("Enter a character: ");
-    scanf(" %c", &ch);
-    if ((ch >= 'A' && ch <= 'Z') || (ch >= 'a' && ch <= 'z')) {
-        printf("It is an alphabet\n");
-        if (ch=='A'||ch=='E'||ch=='I'||ch=='O'||ch=='U'||
-            ch=='a'||ch=='e'||ch=='i'||ch=='o'||ch=='u') {
-            printf("It is a vowel");
-        } else {
-            printf("It is a consonant");
+    int n, i, j;
+
+    printf("Enter size (n): ");
+    scanf("%d", &n);
+
+    for(i = 0; i < n; i++) {
+        for(j = 0; j < n; j++) {
+
+            // Conditions to print 'S'
+            if(i == 0 || i == n/2 || i == n-1 || 
+               (j == 0 && i < n/2) || 
+               (j == n-1 && i > n/2)) {
+                printf("* ");
+            } else {
+                printf("  ");
+            }
+
         }
+        printf("\n");
     }
-    else if (ch >= '0' && ch <= '9') {
-        printf("It is a digit");
-    }
-    else {
-        printf("It is a special character");
-    }
+
     return 0;
 }
+    
 OUTPUT:
 
-Enter a character: a
+Example (n=7)
 
-It is an alphabet
-
-It is a vowel
+* * * * * * *
+*            
+*            
+* * * * * * *
+            *
+            *
+* * * * * * *
 
 
 4.QUESTION
 
-Write a C program for simple ATM simulation with operations Check Balance, Deposit, Withdraw, Exit using switch and update balance accordingly.
+Write a c program to print the pyramid pattern.
+
+    *
+
+  ***
+
+ *****
+
+*******
+
 
 CODE:
 
 #include <stdio.h>
 int main() {
-    
-    int choice;
-    float bal = 1000, amount;
-    do {
-        printf("\n1. Check Balance\n2. Deposit\n3. Withdraw\n4. Exit\n");
-        printf("Enter your choice: ");
-        scanf("%d", &choice);
-        switch(choice) {
-            case 1:
-                printf("Balance: %.2f\n", bal);
-                break;
-            case 2:
-                printf("Enter amount to deposit: ");
-                scanf("%f", &amount);
-                bal += amount;
-                printf("Updated Balance: %.2f\n", bal);
-                break;
-            case 3:
-                printf("Enter amount to withdraw: ");
-                scanf("%f", &amount);
-                if (amount <= bal) {
-                    bal -= amount;
-                    printf("Updated Balance: %.2f\n", bal);
-                } else {
-                    printf("Insufficient balance\n");
-                }
-                break;
-            case 4:
-                printf("Thank you!\n");
-                break;
-            default:
-                printf("Invalid choice\n");
+
+    int i, j, n = 4;
+
+    for(i = 1; i <= n; i++) {
+
+        // print spaces
+        for(j = 1; j <= n - i; j++) {
+            printf(" ");
         }
-    } while(choice != 4);
+
+        // print stars
+        for(j = 1; j <= 2*i - 1; j++) {
+            printf("*");
+        }
+
+        printf("\n");
+    }
+
     return 0;
 }
+    
 OUTPUT:
 
-1. Check Balance
-   
-2. Deosit
- 
-3. Withdraw
- 
-4. Exit
- 
-Enter your choice: 2
 
-Enter amount to deposit: 500
-
-Updated Balance: 1500.00
-
-1. Check Balance
- 
- 2. Deposit
-  
-4. Withdraw
- 
-6. Exit
+   *
+  ***
+ *****
+*******
 
    
-Enter your choice: 4
-
-Thank you!
 
 
 5.QUESTION
 
-Write a C program for menu driven calculator using [switch statement]
+Write a c program to find GCD of two numbers using loop.
 
 CODE:
 
 #include <stdio.h>
 int main() {
+
+
   
-    int choice;
-    float a, b;
+     int a, b, i, gcd;
+
     printf("Enter two numbers: ");
-    scanf("%f %f", &a, &b);
-    printf("\n1. Addition\n2. Subtraction\n3. Multiplication\n4. Division\n");
-    printf("Enter your choice: ");
-    scanf("%d", &choice);
-    switch(choice) {
-        case 1:
-            printf("Result = %.2f", a + b);
-            break;
-        case 2:
-            printf("Result = %.2f", a - b);
-            break;
-        case 3:
-            printf("Result = %.2f", a * b);
-            break;
-        case 4:
-            if (b != 0)
-                printf("Result = %.2f", a / b);
-            else
-                printf("Division by zero not allowed");
-            break;
-        default:
-            printf("Invalid choice");
+    scanf("%d %d", &a, &b);
+
+    // Find GCD using loop
+    for(i = 1; i <= a && i <= b; i++) {
+        if(a % i == 0 && b % i == 0) {
+            gcd = i;
+        }
     }
-    return 0;
+
+    printf("GCD = %d", gcd);
+
+     return 0;
 }
+
+
 OUTPUT:
 
-Enter two numbers: 10 5
+Enter two numbers: 12 18
 
-1. Addition
- 
-2. Subtraction
- 
-3. Multiplication
- 
-4. Division
- 
-Enter your choice: 1
-
-Result = 15.00
+GCD = 6
